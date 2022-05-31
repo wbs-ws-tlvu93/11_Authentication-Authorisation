@@ -32,12 +32,30 @@ app.get('/login', function (req, res) {
   res.render('pages/login');
 });
 
-app.post('/connect', validateJOI(loginSchema), (req, res, next) => {
+app.post('/connect', validateJOI(loginSchema), (req, res) => {
   const { username, password } = req.body;
 
-  console.log(req.body);
+  if (username === 'John' && password === 'Doe') {
+    console.log('Authenticated!');
+    req.session.isConnected = true;
+    res.status(200).end();
+    return;
+  }
 
-  res.send('Lets see');
+  res.status(400).render('pages/login');
+});
+
+app.get('/admin', (req, res) => {
+  if (req.session.isConnected) {
+    res.send('Admin site');
+  }
+
+  res.status(401).end();
+});
+
+app.get('/logout', (req, res) => {
+  if (req.session.isConnected) req.session.isConnected = false;
+  res.status(200).end();
 });
 
 app.listen(port);
