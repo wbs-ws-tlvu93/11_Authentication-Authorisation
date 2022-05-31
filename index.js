@@ -14,12 +14,18 @@ const sess = {
 };
 
 // Middlewares
+app.set('view engine', 'ejs');
+
 app.use(session(sess));
 
 app.use('/', sessionRouter);
 
 app.get('/', function (req, res) {
   res.send('Hello World');
+});
+
+app.get('/login', function (req, res) {
+  res.render('pages/login');
 });
 
 app.listen(port);
