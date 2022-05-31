@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import sessionRouter from './src/routes/sessionRouter.js';
 
 // constants
 const app = express();
@@ -15,17 +16,10 @@ const sess = {
 // Middlewares
 app.use(session(sess));
 
+app.use('/', sessionRouter);
+
 app.get('/', function (req, res) {
   res.send('Hello World');
-});
-
-app.get('/setname', function (req, res) {
-  req.session.name = 'John Doe';
-  res.send(`Hello ${req.session.name}`);
-});
-
-app.get('/getname', function (req, res) {
-  res.send(req.session.name);
 });
 
 app.listen(port);
