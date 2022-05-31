@@ -1,5 +1,7 @@
 import express, { json, urlencoded } from 'express';
 import session from 'express-session';
+import loginSchema from './src/joi/loginSchemaJoi.js';
+import validateJOI from './src/middleware/validateJOI.js';
 import sessionRouter from './src/routes/sessionRouter.js';
 
 // constants
@@ -30,8 +32,9 @@ app.get('/login', function (req, res) {
   res.render('pages/login');
 });
 
-app.post('/connect', (req, res) => {
+app.post('/connect', validateJOI(loginSchema), (req, res, next) => {
   const { username, password } = req.body;
+
   console.log(req.body);
 
   res.send('Lets see');
