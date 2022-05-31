@@ -14,7 +14,7 @@ sessionRouter.get('/getname', function (req, res) {
 });
 
 sessionRouter.get('/login', function (req, res) {
-  res.render('pages/login');
+  res.render('pages/login', { route: 'session' });
 });
 
 sessionRouter.post('/connect', validateJOI(loginSchema), (req, res) => {

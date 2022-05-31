@@ -1,0 +1,17 @@
+<%- include('../partials/head', { title: 'Authentication Example' }) -%>
+
+<div style="display: grid; place-items: center">
+  <h1>Check JWT Token</h1>
+
+  <form method="post" action="/jwt/checkJWT">
+    <p>
+      <label for="JWT_Token">JWT Token:</label>
+      <input type="text" name="JWT_TOKEN" id="JWT_TOKEN" />
+    </p>
+    <p>
+      <input type="submit" value="Check" />
+    </p>
+  </form>
+</div>
+
+<%- include('../partials/footer') -%>
