@@ -4,7 +4,7 @@ import loginSchema from '../joi/loginSchemaJoi.js';
 import validateJOI from '../middleware/validateJOI.js';
 
 import verify from '../middleware/privateRoute.js';
-import generateAccessToken from '../../utils/generateAccesToken.js';
+import generateAccessToken from '../utils/generateAccesToken.js';
 
 const jwtRouter = Router();
 

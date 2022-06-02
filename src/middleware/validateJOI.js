@@ -1,4 +1,4 @@
-import ErrorResponse from '../../utils/errorResponse.js';
+import ErrorResponse from '../utils/errorResponse.js';
 
 const validateJOI = (schema) => (req, _, next) => {
   const { error } = schema.validate(req.body);
