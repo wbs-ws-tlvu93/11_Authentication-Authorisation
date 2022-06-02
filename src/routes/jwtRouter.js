@@ -4,9 +4,19 @@ import loginSchema from '../joi/loginSchemaJoi.js';
 import validateJOI from '../middleware/validateJOI.js';
 
 import verify from '../middleware/privateRoute.js';
-import { loginUser, verifyToken } from '../controller/jwt_auth.js';
+import {
+  loginUser,
+  registerUser,
+  verifyToken,
+} from '../controller/jwt_auth.js';
 
 const jwtRouter = Router();
+
+jwtRouter.get('/register', (req, res) => {
+  res.render('pages/register', { route: 'jwt' });
+});
+
+jwtRouter.post('/register', registerUser);
 
 jwtRouter.get('/login', (req, res) => {
   res.render('pages/login', { route: 'jwt' });

@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import express, { json, urlencoded } from 'express';
 import session from 'express-session';
 import sessionConfig from './config/session.js';
@@ -6,6 +8,8 @@ import jwtRouter from './src/routes/jwtRouter.js';
 import cors from 'cors';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+
+import './src/db/index.js';
 
 // constants
 const app = express();
